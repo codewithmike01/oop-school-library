@@ -1,11 +1,12 @@
-# frozen_string_literal: true
+require './decorator'
 
 # class for person
-class Person
+class Person < Nameable
   attr_accessor :age, :name
   attr_reader :id
 
   def initialize(age, name = 'unknown', parent_permission: true)
+    super()
     @age = age
     @name = name
     @id = Random.rand(1...1000)
@@ -16,9 +17,20 @@ class Person
     of_age || @parent_permission
   end
 
+  def correct_name
+    name
+  end
+
   private
 
   def of_age
     @age >= 18
   end
 end
+
+person = Person.new(22, 'maximilianus')
+puts person.correct_name
+capitalized_person = CapitalizeDecorator.new(person)
+puts capitalized_person.correct_name
+capitalized_trimmed_person = TrimmerDecorator.new(capitalized_person)
+puts capitalized_trimmed_person.correct_name
