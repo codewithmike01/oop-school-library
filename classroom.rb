@@ -13,4 +13,3 @@ class Classroom
     @students << { student: student, label: label }
   end
 end
-
