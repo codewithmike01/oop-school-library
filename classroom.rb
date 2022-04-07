@@ -10,7 +10,7 @@ class Classroom
   end
 
   def add_student(student, label)
-    @students << { 'student': student, 'label': label }
+    @students << { student: student, label: label }
   end
 end
 
