@@ -122,18 +122,14 @@ class App
   end
 
   def list_all_rental(person)
-    person_selected = nil
-    loop do
-      print 'ID of person: '
-      person_id = gets.chomp
-      person_selected = person.filter { |item| item.id == person_id.to_i }
-      puts 'Rentals: '
-      print "\n"
-      person_selected[0]&.rental&.each do |item|
-        puts %( Date: #{item.date}, Book: "#{item.book.title}" by #{item.book.author})
-      end
-      puts ''
-      return
+    print 'ID of person: '
+    person_id = gets.chomp
+    person_selected = person.filter { |item| item.id == person_id.to_i }
+    puts 'Rentals: '
+    print "\n"
+    person_selected[0]&.rental&.each do |item|
+      puts %( Date: #{item.date}, Book: "#{item.book.title}" by #{item.book.author})
     end
+    puts ''
   end
 end
