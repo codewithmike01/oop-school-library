@@ -1,7 +1,3 @@
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/AbcSize
-
 require './app'
 
 def menu_display

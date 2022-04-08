@@ -1,7 +1,3 @@
-# rubocop:disable Lint/UnreachableLoop
-# rubocop:disable Metrics/AbcSize
-# rubocop:disable Metrics/MethodLength
-
 require './teacher'
 require './student'
 require './rental'
