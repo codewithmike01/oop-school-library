@@ -1,11 +1,11 @@
-# rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/AbcSize
 
 require './app'
 
 def menu_display
-  puts " Please choose an option by entering a number: 
+  puts " Please choose an option by entering a number:
   1 -List all books
   2 -List all people
   3 -Create a person
