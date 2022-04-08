@@ -5,7 +5,7 @@ require './person'
 require './classroom'
 require './book'
 
-# utilities
+# utilities 45
 def pick_selection(selection, option)
   selection.each_with_index do |item, index|
     return item if index == option.to_i
@@ -42,7 +42,7 @@ def person_creation(option)
     name = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    pass_check = validate(age, name, specialization)
+    pass_che = validate(age, name, specialization)
     return unless pass_check == true
 
     Teacher.new(age, specialization, name)

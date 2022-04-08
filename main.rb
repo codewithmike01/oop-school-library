@@ -22,7 +22,7 @@ def main(store)
     option = gets.chomp
     case option
     when '1'
-      app.list_books(store[:books])
+      app.list_boo(store[:books])
     when '2'
       app.list_people(store[:person])
     when '3'
@@ -32,7 +32,7 @@ def main(store)
     when '5'
       app.create_rental(store[:person], store[:books])
     when '6'
-      app.list_all_rental(store[:person])
+      app.list_all_rent(store[:person])
     when '7'
       puts "\n"
       puts 'Exited successfully, thank you for using this app 👍😊💪'
