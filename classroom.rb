@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './student'
 
 # class classroom
@@ -10,7 +12,8 @@ class Classroom
     @students = []
   end
 
-  def add_student(student, label)
-    @students << { student: student, label: label }
+  def add_student(student)
+    @students << student unless @students.include?(student)
+    student.classroom = self
   end
 end
