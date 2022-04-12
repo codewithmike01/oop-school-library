@@ -1,3 +1,4 @@
+require 'json'
 require './teacher'
 require './student'
 require './rental'
@@ -5,6 +6,11 @@ require './person'
 require './classroom'
 require './book'
 require './utilities'
+
+def define_book(arr, title, author)
+  book = Book.new(title, author)
+  arr << book
+end
 
 # class App
 class App
@@ -40,8 +46,7 @@ class App
     pass_check = AppUtil.validate(title, author)
     return unless pass_check == true
 
-    new_book = Book.new(title, author)
-    book << new_book
+    define_book(book, title, author)
     puts 'Book created successfully'
     puts ' '
   end
@@ -63,5 +68,22 @@ class App
       puts %( Date: #{item.date}, Book: "#{item.book.title}" by #{item.book.author})
     end
     puts ''
+  end
+
+  def save_data(book)
+    test = book.map { |item| { title: item.title, author: item.author } }
+    data = JSON.generate(test)
+    File.write('book.json', data)
+  end
+
+  def load_data
+    return [] unless File.exist?('book.json')
+
+    book_list = []
+    data = File.read('book.json')
+    JSON.parse(data).each do |item|
+      define_book(book_list, item['title'], item['author'])
+    end
+    book_list
   end
 end
