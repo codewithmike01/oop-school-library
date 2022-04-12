@@ -7,7 +7,7 @@ def main(store)
   util = Util.new
   option = nil
   store[:books] = app.load_books
-  store[:person] = app.load_people
+  store[:person] = app.load_people_details
   while option != '7'
     util.menu_display
     option = gets.chomp
@@ -28,7 +28,7 @@ def main(store)
       puts "\n"
       puts 'Exited successfully, thank you for using this app 👍😊💪'
       app.save_books(store[:books])
-      app.save_people(store[:person])
+      app.save_people_details(store[:person])
     else
       puts 'Wrong input'
     end

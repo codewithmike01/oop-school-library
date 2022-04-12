@@ -87,20 +87,40 @@ class App
     book_list
   end
 
-  def save_people(people)
-    person = people.map { |item| { age: item.age, class: item.class, id: item.id, name: item.name } }
+  def save_people_details(people)
+    person = people.map do |item|
+      {
+        age: item.age,
+        class: item.class,
+        id: item.id,
+        name: item.name,
+        rental: item.rental.map do |rent|
+                  { date: rent.date, book: { title: rent.book.title, author: rent.book.author } }
+                end || []
+      }
+    end
+
     data = JSON.generate(person)
     File.write('person.json', data)
   end
 
-  def load_people
+  def load_people_details
     return [] unless File.exist?('person.json')
 
-    people= []
+    people = []
+
     data = File.read('person.json')
     JSON.parse(data).each do |item|
-      people << AppUtil.define_person(item['class'], item['age'], item['name'], item['permission'], item['specialization'])
+      person = AppUtil.define_person(item['class'], item['age'], item['name'], item['permission'],
+                                     item['specialization'])
+      item['rental'].each do |rent|
+        books = []
+        define_book(books, rent['book']['title'], rent['book']['author'])
+        Rental.new(rent['date'], person, books[0])
+      end
+      people << person
     end
+
     people
   end
 end

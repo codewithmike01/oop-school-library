@@ -58,7 +58,7 @@ module AppUtil
     [age, name, specialization]
   end
 
-  def self.define_person(type, age, name, permission=nil,specialization=nil)
+  def self.define_person(type, age, name, permission = nil, specialization = nil)
     case type
     when 'Student'
       Student.new(age, name, permission)
@@ -73,10 +73,10 @@ module AppUtil
     case option
     when '1'
       age, name, permission = person_messenger_student
-      self.define_person('Student', age, name, permission)
+      define_person('Student', age, name, permission)
     when '2'
       age, name, specialization = person_messenger_teacher
-      self.define_person('Teacher', age, name, specialization)
+      define_person('Teacher', age, name, specialization)
     else
       puts 'Wrong Input'
     end
