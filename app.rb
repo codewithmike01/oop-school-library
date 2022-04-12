@@ -70,13 +70,13 @@ class App
     puts ''
   end
 
-  def save_data(book)
-    test = book.map { |item| { title: item.title, author: item.author } }
-    data = JSON.generate(test)
+  def save_books(book)
+    books = book.map { |item| { title: item.title, author: item.author } }
+    data = JSON.generate(books)
     File.write('book.json', data)
   end
 
-  def load_data
+  def load_books
     return [] unless File.exist?('book.json')
 
     book_list = []
@@ -85,5 +85,22 @@ class App
       define_book(book_list, item['title'], item['author'])
     end
     book_list
+  end
+
+  def save_people(people)
+    person = people.map { |item| { age: item.age, class: item.class, id: item.id, name: item.name } }
+    data = JSON.generate(person)
+    File.write('person.json', data)
+  end
+
+  def load_people
+    return [] unless File.exist?('person.json')
+
+    people= []
+    data = File.read('person.json')
+    JSON.parse(data).each do |item|
+      people << AppUtil.define_person(item['class'], item['age'], item['name'], item['permission'], item['specialization'])
+    end
+    people
   end
 end

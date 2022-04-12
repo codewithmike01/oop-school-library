@@ -58,16 +58,25 @@ module AppUtil
     [age, name, specialization]
   end
 
+  def self.define_person(type, age, name, permission=nil,specialization=nil)
+    case type
+    when 'Student'
+      Student.new(age, name, permission)
+    when 'Teacher'
+      Teacher.new(age, specialization, name)
+    end
+  end
+
   def self.person_creation
     print 'Do you want to create a student (1) or a teacher (2)? [input the number]: '
     option = gets.chomp
     case option
     when '1'
       age, name, permission = person_messenger_student
-      Student.new(age, name, permission)
+      self.define_person('Student', age, name, permission)
     when '2'
       age, name, specialization = person_messenger_teacher
-      Teacher.new(age, specialization, name)
+      self.define_person('Teacher', age, name, specialization)
     else
       puts 'Wrong Input'
     end
