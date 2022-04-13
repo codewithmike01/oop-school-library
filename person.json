@@ -1,12 +1,1 @@
-[
-  { "age": "12", "class": "Student", "id": 729, "name": "stud", "rental": [] },
-  {
-    "age": "99",
-    "class": "Teacher",
-    "id": 204,
-    "name": "ttt",
-    "rental": [
-      { "date": "2022", "book": { "title": "Kunfu", "author": "Greeee" } }
-    ]
-  }
-]
+[{"age":"12","class":"Student","id":523,"name":"stud","rental":[]},{"age":"99","class":"Teacher","id":785,"name":"ttt","rental":[{"date":"2022","book":{"title":"Kunfu","author":"Greeee"}}]}]
