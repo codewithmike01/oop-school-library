@@ -1,4 +1,4 @@
-require './person'
+require_relative './person'
 
 # student class
 class Student < Person

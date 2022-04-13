@@ -4,8 +4,8 @@ describe Teacher do
   before(:all) do
     @teacher = Teacher.new(73, 'Liar', 'Jack Dozer')
   end
-  context 'Tesing the person class' do
-    it 'has instance of person' do
+  context 'Tesing the teacher class' do
+    it 'has instance of teacher' do
       expect(@teacher).to be_instance_of Teacher
     end
 
